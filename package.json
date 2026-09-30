@@ -1,0 +1,45 @@
+{
+  "name": "agent-stats",
+  "version": "0.1.0",
+  "description": "Universal local usage dashboard for coding agents",
+  "type": "module",
+  "license": "MIT",
+  "engines": { "node": ">=22.13.0" },
+  "keywords": ["pi-package", "pi-extension", "opencode-plugin", "dashboard", "stats"],
+  "bin": { "agent-stats": "./dist/server.js" },
+  "pi": { "extensions": ["./dist/pi.js"] },
+  "exports": {
+    ".": "./dist/opencode.js",
+    "./opencode": "./dist/opencode.js",
+    "./pi": "./dist/pi.js",
+    "./adapter-contract": { "types": "./src/adapter-contract/index.ts", "default": "./dist/adapter-contract.js" },
+    "./model": { "types": "./src/core/model/index.ts", "default": "./dist/model.js" },
+    "./testing": "./dist/testing.js",
+    "./example": { "types": "./examples/fixture.ts", "default": "./dist/example.js" }
+  },
+  "files": ["dist", "src", "examples", "docs", "build.mjs", "tsconfig.json", "LICENSE", "README.md"],
+  "scripts": {
+    "build": "node build.mjs",
+    "start": "node dist/server.js",
+    "check": "tsc --noEmit -p .",
+    "test": "node --test test/*.test.mjs test/core/*.test.mjs test/adapters/*.test.mjs test/adapter-contract/*.test.mjs test/pi/*.test.mjs test/opencode/*.test.mjs",
+    "prepack": "npm run build"
+  },
+  "peerDependencies": { "@earendil-works/pi-coding-agent": "*" },
+  "peerDependenciesMeta": { "@earendil-works/pi-coding-agent": { "optional": true } },
+  "dependencies": {
+    "@opencode/client": "^2.0.0",
+    "@opencode/plugin": "^2.0.0",
+    "esbuild": "^0.28.2",
+    "lucide-react": "^1.48.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-coding-agent": "^0.87.1",
+    "@types/node": "^26.6.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "^7.0.2"
+  }
+}

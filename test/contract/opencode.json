@@ -1,0 +1,1442 @@
+{
+  "/api/stats": {
+    "overall": {
+      "coverage": {
+        "requests": 1,
+        "latency": 1,
+        "measuredLatency": 1,
+        "ttft": 1,
+        "input": 1,
+        "output": 1,
+        "cacheRead": 1,
+        "cacheWrite": 1,
+        "reasoning": 1,
+        "premiumRequests": 0,
+        "recorded": {
+          "available": 1,
+          "total": 0.75
+        },
+        "estimated": {
+          "available": 0,
+          "total": null
+        },
+        "estimatedCategories": {
+          "input": {
+            "available": 0,
+            "total": null
+          },
+          "output": {
+            "available": 0,
+            "total": null
+          },
+          "cacheRead": {
+            "available": 0,
+            "total": null
+          },
+          "cacheWrite": {
+            "available": 0,
+            "total": null
+          },
+          "reasoning": {
+            "available": 0,
+            "total": null
+          }
+        },
+        "breakdownDifference": {
+          "available": 0,
+          "total": null
+        },
+        "pricingBases": []
+      },
+      "totalRequests": 1,
+      "successfulRequests": 1,
+      "totalReasoningTokens": 0,
+      "failedRequests": 0,
+      "errorRate": 0,
+      "totalInputTokens": 10,
+      "totalOutputTokens": 20,
+      "totalCacheReadTokens": 30,
+      "totalCacheWriteTokens": 5,
+      "cacheRate": 0.6666666666666666,
+      "cacheSavings": null,
+      "totalCost": 0.75,
+      "unpricedRequests": 0,
+      "totalPremiumRequests": 0,
+      "avgDuration": 1400,
+      "avgTtft": 200,
+      "avgTokensPerSecond": 14.285714285714286,
+      "firstTimestamp": 1800000000100,
+      "lastTimestamp": 1800000000100
+    },
+    "spend": {
+      "recorded": 0.75,
+      "estimated": 0,
+      "unavailable": 0,
+      "basis": "recorded totals preferred; estimates only when recorded totals are unavailable"
+    },
+    "byModel": [
+      {
+        "model": "model",
+        "provider": "fixture",
+        "coverage": {
+          "requests": 1,
+          "latency": 1,
+          "measuredLatency": 1,
+          "ttft": 1,
+          "input": 1,
+          "output": 1,
+          "cacheRead": 1,
+          "cacheWrite": 1,
+          "reasoning": 1,
+          "premiumRequests": 0,
+          "recorded": {
+            "available": 1,
+            "total": 0.75
+          },
+          "estimated": {
+            "available": 0,
+            "total": null
+          },
+          "estimatedCategories": {
+            "input": {
+              "available": 0,
+              "total": null
+            },
+            "output": {
+              "available": 0,
+              "total": null
+            },
+            "cacheRead": {
+              "available": 0,
+              "total": null
+            },
+            "cacheWrite": {
+              "available": 0,
+              "total": null
+            },
+            "reasoning": {
+              "available": 0,
+              "total": null
+            }
+          },
+          "breakdownDifference": {
+            "available": 0,
+            "total": null
+          },
+          "pricingBases": []
+        },
+        "totalRequests": 1,
+        "successfulRequests": 1,
+        "totalReasoningTokens": 0,
+        "failedRequests": 0,
+        "errorRate": 0,
+        "totalInputTokens": 10,
+        "totalOutputTokens": 20,
+        "totalCacheReadTokens": 30,
+        "totalCacheWriteTokens": 5,
+        "cacheRate": 0.6666666666666666,
+        "cacheSavings": null,
+        "totalCost": 0.75,
+        "unpricedRequests": 0,
+        "totalPremiumRequests": 0,
+        "avgDuration": 1400,
+        "avgTtft": 200,
+        "avgTokensPerSecond": 14.285714285714286,
+        "firstTimestamp": 1800000000100,
+        "lastTimestamp": 1800000000100
+      }
+    ],
+    "byFolder": [
+      {
+        "folder": "/work/app",
+        "coverage": {
+          "requests": 1,
+          "latency": 1,
+          "measuredLatency": 1,
+          "ttft": 1,
+          "input": 1,
+          "output": 1,
+          "cacheRead": 1,
+          "cacheWrite": 1,
+          "reasoning": 1,
+          "premiumRequests": 0,
+          "recorded": {
+            "available": 1,
+            "total": 0.75
+          },
+          "estimated": {
+            "available": 0,
+            "total": null
+          },
+          "estimatedCategories": {
+            "input": {
+              "available": 0,
+              "total": null
+            },
+            "output": {
+              "available": 0,
+              "total": null
+            },
+            "cacheRead": {
+              "available": 0,
+              "total": null
+            },
+            "cacheWrite": {
+              "available": 0,
+              "total": null
+            },
+            "reasoning": {
+              "available": 0,
+              "total": null
+            }
+          },
+          "breakdownDifference": {
+            "available": 0,
+            "total": null
+          },
+          "pricingBases": []
+        },
+        "totalRequests": 1,
+        "successfulRequests": 1,
+        "totalReasoningTokens": 0,
+        "failedRequests": 0,
+        "errorRate": 0,
+        "totalInputTokens": 10,
+        "totalOutputTokens": 20,
+        "totalCacheReadTokens": 30,
+        "totalCacheWriteTokens": 5,
+        "cacheRate": 0.6666666666666666,
+        "cacheSavings": null,
+        "totalCost": 0.75,
+        "unpricedRequests": 0,
+        "totalPremiumRequests": 0,
+        "avgDuration": 1400,
+        "avgTtft": 200,
+        "avgTokensPerSecond": 14.285714285714286,
+        "firstTimestamp": 1800000000100,
+        "lastTimestamp": 1800000000100
+      }
+    ],
+    "byAgentType": [
+      {
+        "agentType": "main",
+        "totalRequests": 1,
+        "totalInputTokens": 10,
+        "totalOutputTokens": 20,
+        "totalReasoningTokens": 0,
+        "totalCacheReadTokens": 30,
+        "totalCacheWriteTokens": 5,
+        "totalCost": 0.75
+      }
+    ],
+    "timeSeries": [
+      {
+        "timestamp": 1799971200000,
+        "requests": 1,
+        "errors": 0,
+        "tokens": 65,
+        "cost": 0.75
+      }
+    ],
+    "modelSeries": [
+      {
+        "timestamp": 1799971200000,
+        "model": "model",
+        "provider": "fixture",
+        "requests": 1
+      }
+    ],
+    "modelPerformanceSeries": [
+      {
+        "timestamp": 1799971200000,
+        "model": "model",
+        "provider": "fixture",
+        "requests": 1,
+        "avgTtft": 200,
+        "avgTokensPerSecond": 14.285714285714286
+      }
+    ],
+    "costSeries": [
+      {
+        "timestamp": 1799971200000,
+        "model": "model",
+        "provider": "fixture",
+        "recordedCost": 0.75,
+        "estimatedCost": null,
+        "cost": 0.75,
+        "requests": 1,
+        "unpricedRequests": 0,
+        "costInput": null,
+        "costOutput": null,
+        "costCacheRead": null,
+        "costCacheWrite": null
+      }
+    ]
+  },
+  "/api/stats/overview": {
+    "overall": {
+      "coverage": {
+        "requests": 1,
+        "latency": 1,
+        "measuredLatency": 1,
+        "ttft": 1,
+        "input": 1,
+        "output": 1,
+        "cacheRead": 1,
+        "cacheWrite": 1,
+        "reasoning": 1,
+        "premiumRequests": 0,
+        "recorded": {
+          "available": 1,
+          "total": 0.75
+        },
+        "estimated": {
+          "available": 0,
+          "total": null
+        },
+        "estimatedCategories": {
+          "input": {
+            "available": 0,
+            "total": null
+          },
+          "output": {
+            "available": 0,
+            "total": null
+          },
+          "cacheRead": {
+            "available": 0,
+            "total": null
+          },
+          "cacheWrite": {
+            "available": 0,
+            "total": null
+          },
+          "reasoning": {
+            "available": 0,
+            "total": null
+          }
+        },
+        "breakdownDifference": {
+          "available": 0,
+          "total": null
+        },
+        "pricingBases": []
+      },
+      "totalRequests": 1,
+      "successfulRequests": 1,
+      "totalReasoningTokens": 0,
+      "failedRequests": 0,
+      "errorRate": 0,
+      "totalInputTokens": 10,
+      "totalOutputTokens": 20,
+      "totalCacheReadTokens": 30,
+      "totalCacheWriteTokens": 5,
+      "cacheRate": 0.6666666666666666,
+      "cacheSavings": null,
+      "totalCost": 0.75,
+      "unpricedRequests": 0,
+      "totalPremiumRequests": 0,
+      "avgDuration": 1400,
+      "avgTtft": 200,
+      "avgTokensPerSecond": 14.285714285714286,
+      "firstTimestamp": 1800000000100,
+      "lastTimestamp": 1800000000100
+    },
+    "byAgentType": [
+      {
+        "agentType": "main",
+        "totalRequests": 1,
+        "totalInputTokens": 10,
+        "totalOutputTokens": 20,
+        "totalReasoningTokens": 0,
+        "totalCacheReadTokens": 30,
+        "totalCacheWriteTokens": 5,
+        "totalCost": 0.75
+      }
+    ],
+    "timeSeries": [
+      {
+        "timestamp": 1799971200000,
+        "requests": 1,
+        "errors": 0,
+        "tokens": 65,
+        "cost": 0.75
+      }
+    ],
+    "spend": {
+      "recorded": 0.75,
+      "estimated": 0,
+      "unavailable": 0,
+      "basis": "recorded totals preferred; estimates only when recorded totals are unavailable"
+    }
+  },
+  "/api/stats/recent": [
+    {
+      "id": 2,
+      "source": {
+        "sourceId": "opencode:local",
+        "clientType": "opencode",
+        "label": "OpenCode",
+        "capabilities": {
+          "requestDetails": true,
+          "toolResults": true,
+          "traceEvents": true,
+          "ttft": true,
+          "recordedCosts": true,
+          "pricingEstimates": true
+        }
+      },
+      "sessionFile": "[\"opencode:local\",\"ses_fixture\"]",
+      "entryId": "a1",
+      "folder": "/work/app",
+      "model": "model",
+      "provider": "fixture",
+      "api": "opencode",
+      "timestamp": 1800000000100,
+      "duration": 1400,
+      "ttft": 200,
+      "stopReason": "tool-calls",
+      "errorMessage": null,
+      "usage": {
+        "input": 10,
+        "output": 20,
+        "reasoning": 0,
+        "cacheRead": 30,
+        "cacheWrite": 5,
+        "totalTokens": 65,
+        "premiumRequests": 0,
+        "cost": {
+          "input": null,
+          "output": null,
+          "cacheRead": null,
+          "cacheWrite": null,
+          "total": 0.75
+        }
+      },
+      "cost": {
+        "currency": "USD",
+        "recorded": {
+          "total": {
+            "amount": 0.75,
+            "provenance": {
+              "locator": {
+                "sessionId": "ses_fixture",
+                "messageId": "a1"
+              },
+              "observedAt": 1790724494999,
+              "revision": "1800000002000",
+              "adapterVersion": "1"
+            }
+          },
+          "categories": {
+            "input": null,
+            "output": null,
+            "cacheRead": null,
+            "cacheWrite": null,
+            "reasoning": null
+          }
+        },
+        "estimated": {
+          "total": null,
+          "categories": {
+            "input": null,
+            "output": null,
+            "cacheRead": null,
+            "cacheWrite": null,
+            "reasoning": null
+          }
+        }
+      },
+      "costUnpriced": false,
+      "agentType": "main",
+      "outcome": {
+        "status": "succeeded",
+        "reason": "tool-calls",
+        "error": null
+      },
+      "timing": {
+        "startedAt": {
+          "value": 1800000000100,
+          "quality": "measured",
+          "method": "source timestamp"
+        },
+        "endedAt": {
+          "value": 1800000001500,
+          "quality": "measured",
+          "method": "source timestamp"
+        },
+        "firstTokenAt": {
+          "value": 1800000000300,
+          "quality": "measured",
+          "method": "source timestamp"
+        },
+        "durationMs": {
+          "value": 1400,
+          "quality": "measured",
+          "method": "endpoint subtraction"
+        },
+        "ttftMs": {
+          "value": 200,
+          "quality": "measured",
+          "method": "endpoint subtraction"
+        }
+      }
+    }
+  ],
+  "/api/stats/tools": {
+    "byTool": [
+      {
+        "tool": "read",
+        "calls": 1,
+        "errors": 0,
+        "argsChars": 12,
+        "resultChars": 8,
+        "totalTokensShare": 65,
+        "outputTokensShare": 20,
+        "costShare": 0.75,
+        "unpricedRequestsShare": 0,
+        "lastUsed": 1800000000100
+      }
+    ],
+    "byToolModel": [
+      {
+        "tool": "read",
+        "calls": 1,
+        "errors": 0,
+        "argsChars": 12,
+        "resultChars": 8,
+        "totalTokensShare": 65,
+        "outputTokensShare": 20,
+        "costShare": 0.75,
+        "unpricedRequestsShare": 0,
+        "lastUsed": 1800000000100,
+        "model": "model",
+        "provider": "fixture"
+      }
+    ],
+    "series": [
+      {
+        "timestamp": 1799971200000,
+        "tool": "read",
+        "calls": 1,
+        "errors": 0
+      }
+    ]
+  },
+  "/api/sessions": [
+    {
+      "file": "[\"opencode:local\",\"ses_fixture\"]",
+      "folder": "/work/app",
+      "title": "Fixture session",
+      "startedAt": 1800000000000,
+      "endedAt": 1800000001500,
+      "requests": 1,
+      "toolCalls": 1,
+      "subagents": 0,
+      "totalTokens": 65,
+      "costTotal": 0.75,
+      "unpricedRequests": 0,
+      "models": [
+        "model"
+      ]
+    }
+  ],
+  "/api/stats/model-dashboard": {
+    "byModel": [
+      {
+        "model": "model",
+        "provider": "fixture",
+        "coverage": {
+          "requests": 1,
+          "latency": 1,
+          "measuredLatency": 1,
+          "ttft": 1,
+          "input": 1,
+          "output": 1,
+          "cacheRead": 1,
+          "cacheWrite": 1,
+          "reasoning": 1,
+          "premiumRequests": 0,
+          "recorded": {
+            "available": 1,
+            "total": 0.75
+          },
+          "estimated": {
+            "available": 0,
+            "total": null
+          },
+          "estimatedCategories": {
+            "input": {
+              "available": 0,
+              "total": null
+            },
+            "output": {
+              "available": 0,
+              "total": null
+            },
+            "cacheRead": {
+              "available": 0,
+              "total": null
+            },
+            "cacheWrite": {
+              "available": 0,
+              "total": null
+            },
+            "reasoning": {
+              "available": 0,
+              "total": null
+            }
+          },
+          "breakdownDifference": {
+            "available": 0,
+            "total": null
+          },
+          "pricingBases": []
+        },
+        "totalRequests": 1,
+        "successfulRequests": 1,
+        "totalReasoningTokens": 0,
+        "failedRequests": 0,
+        "errorRate": 0,
+        "totalInputTokens": 10,
+        "totalOutputTokens": 20,
+        "totalCacheReadTokens": 30,
+        "totalCacheWriteTokens": 5,
+        "cacheRate": 0.6666666666666666,
+        "cacheSavings": null,
+        "totalCost": 0.75,
+        "unpricedRequests": 0,
+        "totalPremiumRequests": 0,
+        "avgDuration": 1400,
+        "avgTtft": 200,
+        "avgTokensPerSecond": 14.285714285714286,
+        "firstTimestamp": 1800000000100,
+        "lastTimestamp": 1800000000100
+      }
+    ],
+    "modelSeries": [
+      {
+        "timestamp": 1799971200000,
+        "model": "model",
+        "provider": "fixture",
+        "requests": 1
+      }
+    ],
+    "modelPerformanceSeries": [
+      {
+        "timestamp": 1799971200000,
+        "model": "model",
+        "provider": "fixture",
+        "requests": 1,
+        "avgTtft": 200,
+        "avgTokensPerSecond": 14.285714285714286
+      }
+    ]
+  },
+  "/api/stats/costs": {
+    "costSeries": [
+      {
+        "timestamp": 1799971200000,
+        "model": "model",
+        "provider": "fixture",
+        "recordedCost": 0.75,
+        "estimatedCost": null,
+        "cost": 0.75,
+        "requests": 1,
+        "unpricedRequests": 0,
+        "costInput": null,
+        "costOutput": null,
+        "costCacheRead": null,
+        "costCacheWrite": null
+      }
+    ],
+    "spend": {
+      "recorded": 0.75,
+      "estimated": 0,
+      "unavailable": 0,
+      "basis": "recorded totals preferred; estimates only when recorded totals are unavailable"
+    }
+  },
+  "/api/stats/providers": {
+    "providers": [
+      {
+        "coverage": {
+          "requests": 1,
+          "latency": 1,
+          "measuredLatency": 1,
+          "ttft": 1,
+          "input": 1,
+          "output": 1,
+          "cacheRead": 1,
+          "cacheWrite": 1,
+          "reasoning": 1,
+          "premiumRequests": 0,
+          "recorded": {
+            "available": 1,
+            "total": 0.75
+          },
+          "estimated": {
+            "available": 0,
+            "total": null
+          },
+          "estimatedCategories": {
+            "input": {
+              "available": 0,
+              "total": null
+            },
+            "output": {
+              "available": 0,
+              "total": null
+            },
+            "cacheRead": {
+              "available": 0,
+              "total": null
+            },
+            "cacheWrite": {
+              "available": 0,
+              "total": null
+            },
+            "reasoning": {
+              "available": 0,
+              "total": null
+            }
+          },
+          "breakdownDifference": {
+            "available": 0,
+            "total": null
+          },
+          "pricingBases": []
+        },
+        "provider": "fixture",
+        "totalRequests": 1,
+        "failedRequests": 0,
+        "models": 1,
+        "totalInputTokens": 10,
+        "totalOutputTokens": 20,
+        "totalCacheReadTokens": 30,
+        "totalCacheWriteTokens": 5,
+        "totalTokens": 65,
+        "totalCost": 0.75,
+        "unpricedRequests": 0,
+        "totalPremiumRequests": 0,
+        "avgTokensPerSecond": 14.285714285714286
+      }
+    ],
+    "hourly": [
+      {
+        "provider": "fixture",
+        "hour": 8,
+        "totalTokens": 65,
+        "outputTokens": 20,
+        "requests": 1
+      }
+    ],
+    "series": [
+      {
+        "timestamp": 1799971200000,
+        "provider": "fixture",
+        "totalTokens": 65,
+        "cost": 0.75,
+        "unpricedRequests": 0,
+        "requests": 1
+      }
+    ]
+  },
+  "/api/stats/provider-windows": {
+    "windowInsights": [],
+    "usageSeries": []
+  },
+  "/api/stats/folders": [
+    {
+      "folder": "/work/app",
+      "coverage": {
+        "requests": 1,
+        "latency": 1,
+        "measuredLatency": 1,
+        "ttft": 1,
+        "input": 1,
+        "output": 1,
+        "cacheRead": 1,
+        "cacheWrite": 1,
+        "reasoning": 1,
+        "premiumRequests": 0,
+        "recorded": {
+          "available": 1,
+          "total": 0.75
+        },
+        "estimated": {
+          "available": 0,
+          "total": null
+        },
+        "estimatedCategories": {
+          "input": {
+            "available": 0,
+            "total": null
+          },
+          "output": {
+            "available": 0,
+            "total": null
+          },
+          "cacheRead": {
+            "available": 0,
+            "total": null
+          },
+          "cacheWrite": {
+            "available": 0,
+            "total": null
+          },
+          "reasoning": {
+            "available": 0,
+            "total": null
+          }
+        },
+        "breakdownDifference": {
+          "available": 0,
+          "total": null
+        },
+        "pricingBases": []
+      },
+      "totalRequests": 1,
+      "successfulRequests": 1,
+      "totalReasoningTokens": 0,
+      "failedRequests": 0,
+      "errorRate": 0,
+      "totalInputTokens": 10,
+      "totalOutputTokens": 20,
+      "totalCacheReadTokens": 30,
+      "totalCacheWriteTokens": 5,
+      "cacheRate": 0.6666666666666666,
+      "cacheSavings": null,
+      "totalCost": 0.75,
+      "unpricedRequests": 0,
+      "totalPremiumRequests": 0,
+      "avgDuration": 1400,
+      "avgTtft": 200,
+      "avgTokensPerSecond": 14.285714285714286,
+      "firstTimestamp": 1800000000100,
+      "lastTimestamp": 1800000000100
+    }
+  ],
+  "/api/stats/errors": [],
+  "/api/stats/frustration": {
+    "overall": {
+      "messages": 1,
+      "judged": 0,
+      "annoyed": 0,
+      "atAssistant": 0,
+      "angry": 0
+    },
+    "byModel": [
+      {
+        "messages": 1,
+        "judged": 0,
+        "annoyed": 0,
+        "atAssistant": 0,
+        "angry": 0,
+        "key": "model",
+        "label": "model",
+        "modelClass": "unknown",
+        "family": null,
+        "revision": null,
+        "models": [
+          "model"
+        ],
+        "firstSeen": 1800000000000
+      }
+    ],
+    "judgeAvailable": false,
+    "job": {
+      "state": "idle",
+      "total": 0,
+      "done": 0,
+      "failed": 0,
+      "cost": 0,
+      "judge": null,
+      "error": null,
+      "startedAt": null,
+      "finishedAt": null,
+      "concurrency": 0
+    }
+  },
+  "/api/frustration/estimate": {
+    "available": false,
+    "reason": "This standalone dashboard has no judge configured."
+  },
+  "/api/request/:id": {
+    "id": 2,
+    "source": {
+      "sourceId": "opencode:local",
+      "clientType": "opencode",
+      "label": "OpenCode",
+      "capabilities": {
+        "requestDetails": true,
+        "toolResults": true,
+        "traceEvents": true,
+        "ttft": true,
+        "recordedCosts": true,
+        "pricingEstimates": true
+      }
+    },
+    "sessionFile": "[\"opencode:local\",\"ses_fixture\"]",
+    "entryId": "a1",
+    "folder": "/work/app",
+    "model": "model",
+    "provider": "fixture",
+    "api": "opencode",
+    "timestamp": 1800000000100,
+    "duration": 1400,
+    "ttft": 200,
+    "stopReason": "tool-calls",
+    "errorMessage": null,
+    "usage": {
+      "input": 10,
+      "output": 20,
+      "reasoning": 0,
+      "cacheRead": 30,
+      "cacheWrite": 5,
+      "totalTokens": 65,
+      "premiumRequests": 0,
+      "cost": {
+        "input": null,
+        "output": null,
+        "cacheRead": null,
+        "cacheWrite": null,
+        "total": 0.75
+      }
+    },
+    "cost": {
+      "currency": "USD",
+      "recorded": {
+        "total": {
+          "amount": 0.75,
+          "provenance": {
+            "locator": {
+              "sessionId": "ses_fixture",
+              "messageId": "a1"
+            },
+            "observedAt": 1790724494999,
+            "revision": "1800000002000",
+            "adapterVersion": "1"
+          }
+        },
+        "categories": {
+          "input": null,
+          "output": null,
+          "cacheRead": null,
+          "cacheWrite": null,
+          "reasoning": null
+        }
+      },
+      "estimated": {
+        "total": null,
+        "categories": {
+          "input": null,
+          "output": null,
+          "cacheRead": null,
+          "cacheWrite": null,
+          "reasoning": null
+        }
+      }
+    },
+    "costUnpriced": false,
+    "agentType": "main",
+    "outcome": {
+      "status": "succeeded",
+      "reason": "tool-calls",
+      "error": null
+    },
+    "timing": {
+      "startedAt": {
+        "value": 1800000000100,
+        "quality": "measured",
+        "method": "source timestamp"
+      },
+      "endedAt": {
+        "value": 1800000001500,
+        "quality": "measured",
+        "method": "source timestamp"
+      },
+      "firstTokenAt": {
+        "value": 1800000000300,
+        "quality": "measured",
+        "method": "source timestamp"
+      },
+      "durationMs": {
+        "value": 1400,
+        "quality": "measured",
+        "method": "endpoint subtraction"
+      },
+      "ttftMs": {
+        "value": 200,
+        "quality": "measured",
+        "method": "endpoint subtraction"
+      }
+    },
+    "messages": [
+      {
+        "identity": {
+          "sourceId": "opencode:local",
+          "sessionId": "ses_fixture",
+          "recordId": "u1"
+        },
+        "provenance": {
+          "locator": {
+            "sessionId": "ses_fixture",
+            "messageId": "u1"
+          },
+          "observedAt": 1790724494999,
+          "revision": "1800000002000",
+          "adapterVersion": "1"
+        },
+        "origin": null,
+        "kind": "user-message",
+        "at": 1800000000000,
+        "content": [
+          {
+            "type": "text",
+            "text": "Read the file"
+          }
+        ]
+      }
+    ],
+    "output": [
+      {
+        "type": "opaque",
+        "format": "source-content",
+        "data": {
+          "type": "tool",
+          "id": "call_1",
+          "name": "read",
+          "state": {
+            "status": "completed",
+            "input": {
+              "path": "x"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "contents"
+              }
+            ]
+          },
+          "time": {
+            "created": 1800000000400,
+            "completed": 1800000001400
+          }
+        }
+      }
+    ],
+    "record": {
+      "identity": {
+        "sourceId": "opencode:local",
+        "sessionId": "ses_fixture",
+        "recordId": "a1"
+      },
+      "provenance": {
+        "locator": {
+          "sessionId": "ses_fixture",
+          "messageId": "a1"
+        },
+        "observedAt": 1790724494999,
+        "revision": "1800000002000",
+        "adapterVersion": "1"
+      },
+      "origin": null,
+      "kind": "model-request",
+      "model": {
+        "provider": "fixture",
+        "model": "model",
+        "api": "opencode"
+      },
+      "prompt": {
+        "sourceId": "opencode:local",
+        "sessionId": "ses_fixture",
+        "recordId": "u1"
+      },
+      "output": [
+        {
+          "type": "opaque",
+          "format": "source-content",
+          "data": {
+            "type": "tool",
+            "id": "call_1",
+            "name": "read",
+            "state": {
+              "status": "completed",
+              "input": {
+                "path": "x"
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "contents"
+                }
+              ]
+            },
+            "time": {
+              "created": 1800000000400,
+              "completed": 1800000001400
+            }
+          }
+        }
+      ],
+      "usage": {
+        "input": 10,
+        "output": 20,
+        "cacheRead": 30,
+        "cacheWrite": 5,
+        "reasoning": 0,
+        "total": null,
+        "inputIncludesCache": "no",
+        "outputIncludesReasoning": "no",
+        "semantics": "OpenCode V2: disjoint uncached input, visible output, reasoning and cache counters",
+        "additional": {}
+      },
+      "cost": {
+        "currency": "USD",
+        "recorded": {
+          "total": {
+            "amount": 0.75,
+            "provenance": {
+              "locator": {
+                "sessionId": "ses_fixture",
+                "messageId": "a1"
+              },
+              "observedAt": 1790724494999,
+              "revision": "1800000002000",
+              "adapterVersion": "1"
+            }
+          },
+          "categories": {
+            "input": null,
+            "output": null,
+            "cacheRead": null,
+            "cacheWrite": null,
+            "reasoning": null
+          }
+        },
+        "estimated": {
+          "total": null,
+          "categories": {
+            "input": null,
+            "output": null,
+            "cacheRead": null,
+            "cacheWrite": null,
+            "reasoning": null
+          }
+        }
+      },
+      "outcome": {
+        "status": "succeeded",
+        "reason": "tool-calls",
+        "error": null
+      },
+      "timing": {
+        "startedAt": {
+          "value": 1800000000100,
+          "quality": "measured",
+          "method": "source timestamp"
+        },
+        "endedAt": {
+          "value": 1800000001500,
+          "quality": "measured",
+          "method": "source timestamp"
+        },
+        "firstTokenAt": {
+          "value": 1800000000300,
+          "quality": "measured",
+          "method": "source timestamp"
+        },
+        "durationMs": {
+          "value": 1400,
+          "quality": "measured",
+          "method": "endpoint subtraction"
+        },
+        "ttftMs": {
+          "value": 200,
+          "quality": "measured",
+          "method": "endpoint subtraction"
+        }
+      },
+      "purpose": null
+    },
+    "tools": [
+      {
+        "identity": {
+          "sourceId": "opencode:local",
+          "sessionId": "ses_fixture",
+          "recordId": "[\"a1\",\"tool\",\"call_1\"]"
+        },
+        "provenance": {
+          "locator": {
+            "sessionId": "ses_fixture",
+            "messageId": "a1"
+          },
+          "observedAt": 1790724494999,
+          "revision": "1800000002000",
+          "adapterVersion": "1"
+        },
+        "origin": null,
+        "kind": "tool-execution",
+        "request": {
+          "sourceId": "opencode:local",
+          "sessionId": "ses_fixture",
+          "recordId": "a1"
+        },
+        "callId": "call_1",
+        "name": "read",
+        "arguments": {
+          "value": {
+            "path": "x"
+          }
+        },
+        "result": [
+          {
+            "type": "text",
+            "text": "contents"
+          }
+        ],
+        "outcome": {
+          "status": "succeeded",
+          "reason": "completed",
+          "error": null
+        },
+        "timing": {
+          "startedAt": {
+            "value": 1800000000400,
+            "quality": "measured",
+            "method": "source timestamp"
+          },
+          "endedAt": {
+            "value": 1800000001400,
+            "quality": "measured",
+            "method": "source timestamp"
+          },
+          "firstTokenAt": null,
+          "durationMs": {
+            "value": 1000,
+            "quality": "measured",
+            "method": "endpoint subtraction"
+          },
+          "ttftMs": null
+        }
+      }
+    ]
+  },
+  "/api/session/trace": {
+    "file": "[\"opencode:local\",\"ses_fixture\"]",
+    "title": "Fixture session",
+    "cwd": "/work/app",
+    "startedAt": 1800000000000,
+    "endedAt": 1800000001500,
+    "mtimeMs": 1800000002000,
+    "etag": "2dd95ad599cc4645472d823be947bede5e67c92d717e8a3a2d5bf8a7cf737acb",
+    "tracks": [
+      {
+        "id": "main",
+        "parentId": null,
+        "label": "Main",
+        "agent": null,
+        "model": "model",
+        "file": "[\"opencode:local\",\"ses_fixture\"]",
+        "spans": [
+          {
+            "id": "[\"[\\\"opencode:local\\\",\\\"ses_fixture\\\"]\",\"u1\"]",
+            "kind": "turn",
+            "start": 1800000000000,
+            "end": 1800000000000,
+            "label": "Read the file",
+            "entryId": "u1"
+          },
+          {
+            "id": "[\"[\\\"opencode:local\\\",\\\"ses_fixture\\\"]\",\"a1\"]",
+            "kind": "model",
+            "start": 1800000000100,
+            "end": 1800000001500,
+            "label": "model",
+            "entryId": "a1",
+            "model": "model",
+            "tokens": 65,
+            "cost": 0.75,
+            "ttft": 200,
+            "durationKnown": true,
+            "isError": false,
+            "unterminated": false
+          },
+          {
+            "id": "[\"[\\\"opencode:local\\\",\\\"ses_fixture\\\"]\",\"[\\\"a1\\\",\\\"tool\\\",\\\"call_1\\\"]\"]",
+            "kind": "tool",
+            "start": 1800000000400,
+            "end": 1800000001400,
+            "label": "read",
+            "entryId": "[\"a1\",\"tool\",\"call_1\"]",
+            "toolCallId": "call_1",
+            "detail": "{\"path\":\"x\"}",
+            "durationKnown": true,
+            "isError": false,
+            "unterminated": false
+          }
+        ],
+        "markers": []
+      }
+    ],
+    "summary": {
+      "wallMs": 1500,
+      "modelMs": 1400,
+      "toolMs": 1000,
+      "idleMs": 100,
+      "turns": 1,
+      "requests": 1,
+      "toolCalls": 1,
+      "subagents": 0,
+      "totalTokens": 65,
+      "costTotal": 0.75,
+      "unpricedRequests": 0,
+      "toolStats": [
+        {
+          "tool": "read",
+          "calls": 1,
+          "errors": 0,
+          "totalMs": 1000,
+          "maxMs": 1000
+        }
+      ]
+    }
+  },
+  "/api/session/entry": {
+    "entry": {
+      "identity": {
+        "sourceId": "opencode:local",
+        "sessionId": "ses_fixture",
+        "recordId": "a1"
+      },
+      "provenance": {
+        "locator": {
+          "sessionId": "ses_fixture",
+          "messageId": "a1"
+        },
+        "observedAt": 1790724494999,
+        "revision": "1800000002000",
+        "adapterVersion": "1"
+      },
+      "origin": null,
+      "kind": "model-request",
+      "model": {
+        "provider": "fixture",
+        "model": "model",
+        "api": "opencode"
+      },
+      "prompt": {
+        "sourceId": "opencode:local",
+        "sessionId": "ses_fixture",
+        "recordId": "u1"
+      },
+      "output": [
+        {
+          "type": "opaque",
+          "format": "source-content",
+          "data": {
+            "type": "tool",
+            "id": "call_1",
+            "name": "read",
+            "state": {
+              "status": "completed",
+              "input": {
+                "path": "x"
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "contents"
+                }
+              ]
+            },
+            "time": {
+              "created": 1800000000400,
+              "completed": 1800000001400
+            }
+          }
+        }
+      ],
+      "usage": {
+        "input": 10,
+        "output": 20,
+        "cacheRead": 30,
+        "cacheWrite": 5,
+        "reasoning": 0,
+        "total": null,
+        "inputIncludesCache": "no",
+        "outputIncludesReasoning": "no",
+        "semantics": "OpenCode V2: disjoint uncached input, visible output, reasoning and cache counters",
+        "additional": {}
+      },
+      "cost": {
+        "currency": "USD",
+        "recorded": {
+          "total": {
+            "amount": 0.75,
+            "provenance": {
+              "locator": {
+                "sessionId": "ses_fixture",
+                "messageId": "a1"
+              },
+              "observedAt": 1790724494999,
+              "revision": "1800000002000",
+              "adapterVersion": "1"
+            }
+          },
+          "categories": {
+            "input": null,
+            "output": null,
+            "cacheRead": null,
+            "cacheWrite": null,
+            "reasoning": null
+          }
+        },
+        "estimated": {
+          "total": null,
+          "categories": {
+            "input": null,
+            "output": null,
+            "cacheRead": null,
+            "cacheWrite": null,
+            "reasoning": null
+          }
+        }
+      },
+      "outcome": {
+        "status": "succeeded",
+        "reason": "tool-calls",
+        "error": null
+      },
+      "timing": {
+        "startedAt": {
+          "value": 1800000000100,
+          "quality": "measured",
+          "method": "source timestamp"
+        },
+        "endedAt": {
+          "value": 1800000001500,
+          "quality": "measured",
+          "method": "source timestamp"
+        },
+        "firstTokenAt": {
+          "value": 1800000000300,
+          "quality": "measured",
+          "method": "source timestamp"
+        },
+        "durationMs": {
+          "value": 1400,
+          "quality": "measured",
+          "method": "endpoint subtraction"
+        },
+        "ttftMs": {
+          "value": 200,
+          "quality": "measured",
+          "method": "endpoint subtraction"
+        }
+      },
+      "purpose": null
+    }
+  }
+}

@@ -1,0 +1,141 @@
+import assert from "node:assert/strict";
+import { mkdtemp, mkdir, writeFile, appendFile, rm } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { createServer } from "node:http";
+import { once } from "node:events";
+import { test } from "node:test";
+import { piAdapter, parseJournal } from "../../src/adapters/pi.ts";
+import { openCodeAdapter, convertSession, convertMessages, modelCards } from "../../src/adapters/opencode.ts";
+import { IngestionStore } from "../../src/core/storage/index.ts";
+import { estimateCost } from "../../src/core/pricing/index.ts";
+import { preferredTotal } from "../../src/core/model/index.ts";
+
+const signal = new AbortController().signal;
+const context = sourceId => ({ source: { sourceId }, signal, log() {} });
+const session = convertSession({ id: "same", location: { directory: "/app" }, time: { created: 1000, updated: 2000 } }, "oc");
+const message = { id: "request", type: "assistant", model: { id: "m", providerID: "p" }, time: { created: 1000 }, tokens: { input: 10, output: 20, reasoning: 0, cache: { read: 30, write: 0 } }, cost: 0 };
+const cards = modelCards([{ id: "m", providerID: "p", cost: [{ input: 1, output: 2, cache: { read: 0.1, write: 3 } }] }], 5000);
+
+test("recorded zero, missing costs, live requests and tiered estimates remain distinct", () => {
+	const r = convertMessages(session, [message], cards).records[0];
+	assert.equal(r.outcome.status, "running");
+	assert.equal(r.timing.durationMs, null);
+	assert.equal(r.cost.recorded.categories.input, null);
+	assert.equal(r.cost.estimated.categories.input.amount, 10 / 1e6);
+	assert.deepEqual(preferredTotal(r.cost), { amount: 0, basis: "recorded" });
+	const unknown = convertMessages(session, [{ ...message, tokens: {}, cost: undefined }], cards).records[0];
+	assert.equal(unknown.cost.recorded.total, null);
+	assert.equal(unknown.cost.estimated.total, null);
+	assert.equal(unknown.usage.input, null);
+	const tiers = modelCards([{ id: "m", providerID: "p", cost: [{ input: 1, output: 2, cache: { read: 0.1, write: 3 } }, { tier: { type: "context", size: 40 }, input: 4, output: 8, cache: { read: 1, write: 12 } }] }], 5000);
+	assert.equal(estimateCost(r, tiers).estimated.categories.input.basis.tier.minimum, 0, "exact threshold stays in base tier");
+	const above = { ...r, usage: { ...r.usage, input: 11, reasoning: 5 } };
+	const priced = estimateCost(above, tiers);
+	assert.equal(priced.estimated.categories.input.basis.tier.minimum, 41);
+	assert.equal(priced.estimated.categories.reasoning.amount, 5 * 8 / 1e6);
+	assert.ok(Math.abs(priced.estimated.total.amount - (11 * 4 + 20 * 8 + 5 * 8 + 30) / 1e6) < 1e-12);
+	assert.equal(estimateCost({ ...r, usage: { ...r.usage, reasoning: null } }, cards).estimated.total, null);
+	assert.equal(estimateCost(unknown, tiers).estimated.total, null);
+	assert.equal(estimateCost({ ...r, usage: { ...r.usage, inputIncludesCache: "unknown" } }, tiers).estimated.total, null);
+	const interrupted = convertMessages(session, [message, { id: "idle", type: "idle", time: { created: 2000 }, outcome: "interrupted" }]).records[0];
+	assert.equal(interrupted.outcome.status, "interrupted");
+	assert.equal(interrupted.timing.endedAt, null, "idle does not fabricate a request end timestamp");
+});
+
+test("OpenCode V2 remapped fork history is context, while new work remains billable", async t => {
+	const parent = { ...message, cost: 1, time: { created: 1000, completed: 2000 }, finish: "stop" };
+	const nativeFork = { id: "fork", fork: { sessionID: "parent", boundary: { type: "through", messageID: parent.id } }, time: { created: 10_000, updated: 12_000 }, location: {} };
+	const api = createServer((req, res) => {
+		const p = new URL(req.url, "http://fixture").pathname;
+		const data = p === "/api/model" ? [] : p === "/api/session" ? [nativeFork] : p.includes("/parent/") ? [parent] :
+			[{ ...parent, id: "msg_forkEvent_1" }, { ...parent, id: "new", cost: 2, time: { created: 11_000, completed: 12_000 } }];
+		res.setHeader("Content-Type", "application/json"); res.end(JSON.stringify({ data }));
+	});
+	api.listen(0, "127.0.0.1"); await once(api, "listening");
+	t.after(() => { api.closeAllConnections(); api.close(); });
+	const connection = await openCodeAdapter.connect({ url: `http://127.0.0.1:${api.address().port}` }, context("oc"));
+	t.after(() => connection.close());
+	const { sessions } = await connection.listSessions({ cursor: null, updatedSince: null, signal });
+	const result = await connection.readSession({ session: sessions[0].identity, checkpoint: null, signal });
+	assert.equal(result.records.filter(r => r.kind === "model-request").length, 1);
+	assert.equal(result.records.find(r => r.kind === "model-request").cost.recorded.total.amount, 2);
+	assert.equal(result.records.find(r => r.kind === "trace-event").eventType, "fork-context");
+	const unchanged = await connection.readSession({ session: sessions[0].identity, checkpoint: result.checkpoint, signal });
+	assert.equal(unchanged.mode, "partial");
+	assert.deepEqual(unchanged.records, []);
+});
+
+test("Pi reads complete lines, links nested subagents and copied fork records, and survives restart", async t => {
+	const root = await mkdtemp(join(tmpdir(), "pi-adapter-"));
+	t.after(() => rm(root, { recursive: true, force: true }));
+	await mkdir(join(root, "project", "parent", "child", "run"), { recursive: true });
+	const file = join(root, "project", "parent.jsonl");
+	const header = { type: "session", id: "parent-id", timestamp: new Date(1000).toISOString(), cwd: "/app" };
+	const request = { type: "message", id: "r", timestamp: new Date(1100).toISOString(), message: { role: "assistant", model: "m", provider: "p", usage: { input: 10 }, content: [], stopReason: "stop" } };
+	const lines = entries => entries.map(JSON.stringify).join("\n") + "\n";
+	await writeFile(file, lines([header, request]));
+	await writeFile(join(root, "project", "parent", "child", "run", "session.jsonl"), lines([{ ...header, id: "child-id" }]));
+	await writeFile(join(root, "project", "fork.jsonl"), lines([{ ...header, id: "fork-id", parentSession: file }, request]));
+	const connection = await piAdapter.connect({ root }, context("pi"));
+	t.after(() => connection.close());
+	const page = await connection.listSessions({ cursor: null, updatedSince: null, signal });
+	assert.equal(page.sessions.find(s => s.identity.sessionId === "child-id").relationships[0].session.sessionId, "parent-id");
+	const fork = await connection.readSession({ session: { sourceId: "pi", sessionId: "fork-id" }, checkpoint: null, signal });
+	assert.equal(fork.records[0].origin.sessionId, "parent-id");
+	const store = new IngestionStore(join(root, "normalized.db"));
+	store.putSource({ sourceId: "pi", clientType: "pi", label: "Pi", capabilities: connection.capabilities });
+	const ref = { sourceId: "pi", sessionId: "parent-id" };
+	const first = await connection.readSession({ session: ref, checkpoint: null, signal });
+	store.commitSnapshot(ref, first);
+	assert.equal(first.records[0].usage.output, null);
+	assert.equal(first.records[0].cost.recorded.total, null);
+	const fragment = JSON.stringify({ ...request, id: "new" });
+	await appendFile(file, fragment);
+	const partial = await connection.readSession({ session: ref, checkpoint: first.checkpoint, signal });
+	assert.equal(partial.records.length, 1);
+	assert.equal(partial.checkpoint.offset, first.checkpoint.offset);
+	await appendFile(file, "\n");
+	const complete = await connection.readSession({ session: ref, checkpoint: first.checkpoint, signal });
+	store.commitSnapshot(ref, complete); store.close();
+	const reopened = new IngestionStore(join(root, "normalized.db"));
+	t.after(() => reopened.close());
+	assert.equal(reopened.getRecords(ref).length, 2);
+	assert.equal(reopened.getSession(ref).checkpoint.offset, complete.checkpoint.offset);
+	assert.throws(() => parseJournal(Buffer.from('{bad}\n')), SyntaxError);
+});
+
+test("OpenCode paginates sessions and messages with authentication; running records update idempotently", async t => {
+	let completed = false, mode = "normal";
+	const fixture = createServer((req, res) => {
+		assert.equal(req.headers.authorization, "Bearer fixture");
+		const url = new URL(req.url, "http://fixture");
+		res.setHeader("Content-Type", "application/json");
+		if (url.pathname === "/api/model") return res.end(JSON.stringify({ data: [] }));
+		if (url.pathname === "/api/session") return res.end(JSON.stringify({ data: [{ id: url.searchParams.has("cursor") ? "second" : "same", location: {}, time: { created: 1000, updated: completed ? 3000 : 2000 } }], cursor: { next: url.searchParams.has("cursor") ? null : "page2" } }));
+		if (mode === "fail") { res.statusCode = 503; return res.end('{}'); }
+		const next = mode === "cycle" ? "cycle" : url.searchParams.has("cursor") ? null : "messages2";
+		res.end(JSON.stringify({ data: url.searchParams.has("cursor") ? [{ ...message, time: { created: 1000, ...(completed ? { completed: 2000 } : {}) }, ...(completed ? { finish: "stop" } : {}) }] : [{ id: "user", type: "user", text: "hi", time: { created: 900 } }], cursor: { next } }));
+	});
+	fixture.listen(0, "127.0.0.1"); await once(fixture, "listening");
+	t.after(() => { fixture.closeAllConnections(); fixture.close(); });
+	const connection = await openCodeAdapter.connect({ url: `http://127.0.0.1:${fixture.address().port}`, headers: { authorization: "Bearer fixture" } }, context("oc"));
+	t.after(() => connection.close());
+	const page = await connection.listSessions({ cursor: null, updatedSince: null, signal });
+	assert.equal(page.nextCursor, "page2");
+	assert.equal((await connection.listSessions({ cursor: page.nextCursor, updatedSince: null, signal })).sessions[0].identity.sessionId, "second");
+	const store = new IngestionStore(":memory:"); t.after(() => store.close());
+	store.putSource({ sourceId: "oc", clientType: "opencode", label: "OpenCode", capabilities: connection.capabilities });
+	const input = { session: session.identity, checkpoint: null, signal };
+	store.commitSnapshot(session.identity, await connection.readSession(input));
+	assert.equal(store.getRecords(session.identity).find(r => r.kind === "model-request").outcome.status, "running");
+	completed = true;
+	store.commitSnapshot(session.identity, await connection.readSession(input));
+	assert.equal(store.getRecords(session.identity).length, 2);
+	assert.equal(store.getRecords(session.identity).find(r => r.kind === "model-request").outcome.status, "succeeded");
+	mode = "cycle";
+	await assert.rejects(connection.readSession(input), /repeated message cursor/);
+	mode = "fail";
+	await assert.rejects(connection.readSession(input), /503/);
+	assert.equal(store.getRecords(session.identity).length, 2);
+});
